@@ -36,7 +36,7 @@ body,
   min-height: 500px;
   background: #ffffff;
   border-radius: 12px;
-  padding: 20px;
+  padding: 20px 25px;
 }
 
 .form__group {
