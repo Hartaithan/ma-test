@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>A JavaScript project</title>
-  <link rel="stylesheet" href="/style.e308ff8e.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="/style.e308ff8e.js"></script></head>
-<body>
-  <h1>A JavaScript project</h1>
-  <div id="app"></div>
-  <script src="/main.1f19ae8e.js"></script>
-</body>
+  <head>
+    <title>MA-TEST</title>
+    <link rel="stylesheet" href="/style.e308ff8e.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="/style.e308ff8e.js"></script></head>
+  <body>
+    <div id="app">
+      <form id="form" class="form">
+        <div class="form__group">
+          <label for="firstName">Имя</label>
+          <input type="text" id="firstName" placeholder="Введите имя">
+          <small>Пожалуйста введите имя</small>
+        </div>
+        <div class="form__group invalid">
+          <label for="lastName">Фамилия</label>
+          <input type="text" id="lastName" placeholder="Введите фамилию">
+          <small>Пожалуйста введите фамилию</small>
+        </div>
+        <div class="form__group">
+          <label for="phone">Телефон</label>
+          <input type="phone" id="phone" placeholder="Введите телефон">
+          <small>Пожалуйста введите телефон</small>
+        </div>
+        <div class="form__group">
+          <label for="password">Пароль</label>
+          <input type="password" id="password" placeholder="Введите пароль">
+          <small>Пожалуйста введите пароль</small>
+        </div>
+        <div class="form__group">
+          <label for="passwordCheck">Подтвердите пароль</label>
+          <input type="password" id="passwordCheck" placeholder="Подтвердите пароль">
+          <small>Пожалуйста подтвердите пароль</small>
+        </div>
+        <button class="form__submit" type="submit">Отправить</button>
+      </form>
+    </div>
+    <script src="/main.1f19ae8e.js"></script>
+  </body>
 </html>
