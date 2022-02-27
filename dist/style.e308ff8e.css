@@ -98,5 +98,10 @@ body,
   background: #0051a9;
 }
 
+.form__submit:disabled {
+  background: #9dcbfc;
+  pointer-events: none;
+}
+
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

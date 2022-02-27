@@ -13,17 +13,17 @@
       <form id="form" class="form">
         <div class="form__group">
           <label for="firstName">Имя</label>
-          <input type="text" id="firstName" placeholder="Введите имя">
+          <input type="text" id="firstName" placeholder="Введите имя" minlength="1" maxlength="15">
           <small></small>
         </div>
         <div class="form__group">
           <label for="lastName">Фамилия</label>
-          <input type="text" id="lastName" placeholder="Введите фамилию">
+          <input type="text" id="lastName" placeholder="Введите фамилию" minlength="2">
           <small></small>
         </div>
         <div class="form__group">
           <label for="phone">Телефон</label>
-          <input type="phone" id="phone" placeholder="Введите телефон">
+          <input type="tel" id="phone" placeholder="Введите телефон" maxlength="11">
           <small></small>
         </div>
         <div class="form__group">
@@ -36,7 +36,7 @@
           <input type="password" id="passwordCheck" placeholder="Подтвердите пароль">
           <small></small>
         </div>
-        <button class="form__submit" type="submit">Отправить</button>
+        <button class="form__submit" type="submit" disabled="">Отправить</button>
       </form>
     </div>
     <script src="/main.1f19ae8e.js"></script>

@@ -119,25 +119,57 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   return newRequire;
 })({"main.js":[function(require,module,exports) {
 var form = document.getElementById('form');
+var inputs = form.querySelectorAll('input');
 
-function setError(id, message) {
+function getGroupComponents(id) {
   var input = document.querySelector("#".concat(id));
   var formGroup = input.parentElement;
   var small = formGroup.querySelector('small');
+  return {
+    input: input,
+    formGroup: formGroup,
+    small: small
+  };
+}
+
+function setError(id, message) {
+  var _getGroupComponents = getGroupComponents(id),
+      formGroup = _getGroupComponents.formGroup,
+      small = _getGroupComponents.small;
+
   formGroup.className = 'form__group invalid';
   small.innerText = message;
 }
 
-function validateInputs() {
-  form.querySelectorAll('input');
+function resetError(id) {
+  var _getGroupComponents2 = getGroupComponents(id),
+      formGroup = _getGroupComponents2.formGroup,
+      small = _getGroupComponents2.small;
 
-  for (var i = 0; i < form.length; i += 1) {
-    var _form$i = form[i],
-        id = _form$i.id,
-        value = _form$i.value;
+  formGroup.className = 'form__group';
+  small.innerText = '';
+}
+
+function validateInputs() {
+  for (var i = 0; i < inputs.length; i += 1) {
+    var _inputs$i = inputs[i],
+        id = _inputs$i.id,
+        value = _inputs$i.value;
 
     if (value.trim() === '') {
       setError(id, 'Это поле обязательно');
+      document.querySelector('.form__submit').disabled = true;
+    }
+
+    switch (id) {
+      case 'firstName':
+        break;
+
+      case 'lastName':
+        break;
+
+      default:
+        break;
     }
   }
 }
@@ -146,6 +178,35 @@ form.addEventListener('submit', function (e) {
   e.preventDefault();
   validateInputs();
 });
+form.addEventListener('keydown', function () {
+  var errors = form.querySelectorAll('.invalid');
+  var valideInputs = 0;
+
+  for (var i = 0; i < inputs.length; i += 1) {
+    var value = inputs[i].value;
+
+    if (value.trim().length > 0) {
+      valideInputs += 1;
+    }
+  }
+
+  if (valideInputs === inputs.length && errors.length === 0) {
+    document.querySelector('.form__submit').disabled = false;
+  }
+});
+
+for (var i = 0; i < inputs.length; i += 1) {
+  var element = inputs[i];
+  element.addEventListener('input', function (e) {
+    var _e$target = e.target,
+        id = _e$target.id,
+        value = _e$target.value;
+
+    if (value.trim().length > 0) {
+      resetError(id);
+    }
+  });
+}
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

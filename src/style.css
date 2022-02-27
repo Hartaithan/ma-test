@@ -97,4 +97,9 @@ body,
 .form__submit:hover {
   background: #0051a9;
 }
+
+.form__submit:disabled {
+  background: #9dcbfc;
+  pointer-events: none;
+}
 /*# sourceMappingURL=style.css.map */

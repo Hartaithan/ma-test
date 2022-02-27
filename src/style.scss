@@ -74,5 +74,9 @@ body,
     &:hover {
       background: #0051a9;
     }
+    &:disabled {
+      background: #9dcbfc;
+      pointer-events: none;
+    }
   }
 }
