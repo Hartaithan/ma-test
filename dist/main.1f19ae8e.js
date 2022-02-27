@@ -118,6 +118,9 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"main.js":[function(require,module,exports) {
+/* eslint-disable no-duplicate-case */
+
+/* eslint-disable no-console */
 var form = document.getElementById('form');
 var inputs = form.querySelectorAll('input');
 
@@ -155,8 +158,9 @@ function validateInputs() {
     var _inputs$i = inputs[i],
         id = _inputs$i.id,
         value = _inputs$i.value;
+    var trimmedValue = value.trim();
 
-    if (value.trim() === '') {
+    if (trimmedValue === '') {
       setError(id, 'Это поле обязательно');
       document.querySelector('.form__submit').disabled = true;
       return false;
@@ -164,9 +168,68 @@ function validateInputs() {
 
     switch (id) {
       case 'firstName':
+      case 'lastName':
+        if (!trimmedValue.match(/[a-zA-Z]+/g)) {
+          setError(id, 'Поле должно состоять только из латинских символов');
+          return false;
+        }
+
         break;
 
-      case 'lastName':
+      case 'phone':
+        if (!trimmedValue.match(/^[0-9]+$/g)) {
+          setError(id, 'Телефон должен состоять только из цифр');
+          return false;
+        }
+
+        if (trimmedValue[0] !== '7') {
+          setError(id, 'Телефон должен начинаться с 7');
+          return false;
+        }
+
+        break;
+
+      case 'password':
+        if (trimmedValue !== inputs[4].value.trim()) {
+          setError(id, 'Пароли должны совпадать');
+          setError('passwordCheck', 'Пароли должны совпадать');
+          return false;
+        }
+
+        break;
+
+      case 'password':
+      case 'passwordCheck':
+        if (value.length < 6) {
+          console.log(value.length);
+          setError('password', 'Пароль должен иметь длину от 6 символов');
+          setError('passwordCheck', 'Пароль должен иметь длину от 6 символов');
+          return false;
+        }
+
+        if (!trimmedValue.match(/[a-zA-Z0-9]+/g)) {
+          setError(id, 'Поле должно состоять только из латинских символов и цифр');
+          return false;
+        }
+
+        if (!value.match(/[A-Z]+/g)) {
+          setError('password', 'Пароль должен содержать в себе хоты бы одну заглавную букву');
+          setError(id, 'Пароль должен содержать в себе хоты бы одну заглавную букву');
+          return false;
+        }
+
+        if (!value.match(/[\d]/g)) {
+          setError('password', 'Пароль должен содержать в себе хоты бы одну цифру');
+          setError(id, 'Пароль должен содержать в себе хоты бы одну цифру');
+          return false;
+        }
+
+        if (value.match(/[\s]/g)) {
+          setError('password', 'Пароль не должен содержать в себе пробелы');
+          setError(id, 'Пароль не должен содержать в себе пробелы');
+          return false;
+        }
+
         break;
 
       default:
@@ -174,6 +237,9 @@ function validateInputs() {
     }
   }
 
+  var submit = document.querySelector('.form__submit');
+  submit.className = 'form__submit success';
+  submit.innerText = 'Данные отправлены';
   return true;
 }
 
@@ -187,7 +253,7 @@ form.addEventListener('submit', function (e) {
       phone: e.target[2].value,
       password: e.target[3].value
     };
-    alert(JSON.stringify(payload)); // eslint-disable-line
+    console.log(payload);
   }
 });
 form.addEventListener('keydown', function () {
@@ -195,30 +261,22 @@ form.addEventListener('keydown', function () {
   var valideInputs = 0;
 
   for (var i = 0; i < inputs.length; i += 1) {
-    var value = inputs[i].value;
+    var _inputs$i2 = inputs[i],
+        id = _inputs$i2.id,
+        value = _inputs$i2.value;
 
     if (value.trim().length > 0) {
       valideInputs += 1;
+      resetError(id);
     }
   }
 
   if (valideInputs === inputs.length && errors.length === 0) {
     document.querySelector('.form__submit').disabled = false;
+  } else {
+    document.querySelector('.form__submit').disabled = true;
   }
 });
-
-for (var i = 0; i < inputs.length; i += 1) {
-  var element = inputs[i];
-  element.addEventListener('input', function (e) {
-    var _e$target = e.target,
-        id = _e$target.id,
-        value = _e$target.value;
-
-    if (value.trim().length > 0) {
-      resetError(id);
-    }
-  });
-}
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

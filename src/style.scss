@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-size: 14px;
   font-weight: normal;
+  transition: all 0.2s ease-out;
 }
 
 html,
@@ -71,6 +72,12 @@ body,
     color: #ffffff;
     border-radius: 0.25rem;
     cursor: pointer;
+    &.success {
+      background: #00a91c;
+      &:hover {
+        background: #007c15;
+      }
+    }
     &:hover {
       background: #0051a9;
     }

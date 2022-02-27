@@ -6,6 +6,8 @@
           box-sizing: border-box;
   font-size: 14px;
   font-weight: normal;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 html,
@@ -92,6 +94,14 @@ body,
   color: #ffffff;
   border-radius: 0.25rem;
   cursor: pointer;
+}
+
+.form__submit.success {
+  background: #00a91c;
+}
+
+.form__submit.success:hover {
+  background: #007c15;
 }
 
 .form__submit:hover {
