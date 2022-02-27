@@ -33,13 +33,14 @@ body,
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  min-height: 500px;
+  min-height: 400px;
   background: #ffffff;
   border-radius: 12px;
   padding: 20px 25px;
 }
 
 .form__group {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -58,7 +59,7 @@ body,
 }
 
 .form__group:not(:last-child) {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .form__group label {
@@ -77,6 +78,9 @@ body,
 }
 
 .form__group small {
+  position: absolute;
+  left: 0;
+  bottom: -10px;
   font-size: 10px;
 }
 

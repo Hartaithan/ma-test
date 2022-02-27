@@ -24,11 +24,12 @@ body,
 .form {
   width: 400px;
   height: fit-content;
-  min-height: 500px;
+  min-height: 400px;
   background: #ffffff;
   border-radius: 12px;
   padding: 20px 25px;
   &__group {
+    position: relative;
     display: flex;
     flex-direction: column;
     &.invalid {
@@ -40,7 +41,7 @@ body,
       }
     }
     &:not(:last-child) {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
     label {
       font-size: 1rem;
@@ -56,6 +57,9 @@ body,
       margin-bottom: 4px;
     }
     small {
+      position: absolute;
+      left: 0;
+      bottom: -10px;
       font-size: 10px;
     }
   }

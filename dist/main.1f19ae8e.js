@@ -120,20 +120,24 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"main.js":[function(require,module,exports) {
 var form = document.getElementById('form');
 
-function setError(id) {
-  console.log(id);
+function setError(id, message) {
+  var input = document.querySelector("#".concat(id));
+  var formGroup = input.parentElement;
+  var small = formGroup.querySelector('small');
+  formGroup.className = 'form__group invalid';
+  small.innerText = message;
 }
 
 function validateInputs() {
   form.querySelectorAll('input');
 
-  for (var i = 0; i < form.length; i++) {
+  for (var i = 0; i < form.length; i += 1) {
     var _form$i = form[i],
         id = _form$i.id,
         value = _form$i.value;
 
     if (value.trim() === '') {
-      setError(id);
+      setError(id, 'Это поле обязательно');
     }
   }
 }
@@ -170,7 +174,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49364" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59399" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
