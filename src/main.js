@@ -26,6 +26,7 @@ function validateInputs() {
     if (value.trim() === '') {
       setError(id, 'Это поле обязательно');
       document.querySelector('.form__submit').disabled = true;
+      return false;
     }
     switch (id) {
       case 'firstName':
@@ -36,11 +37,20 @@ function validateInputs() {
         break;
     }
   }
+  return true;
 }
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  validateInputs();
+  if (validateInputs()) {
+    const payload = {
+      firstName: e.target[0].value,
+      lastName: e.target[1].value,
+      phone: e.target[2].value,
+      password: e.target[3].value,
+    };
+    alert(JSON.stringify(payload)); // eslint-disable-line
+  }
 });
 
 form.addEventListener('keydown', () => {
